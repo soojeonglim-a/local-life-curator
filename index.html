@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>창업 공간 협력 프로젝트 매니저 | 지역 정착의 새로운 기준</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e5e5;
+            padding: 20px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0056B3;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+        
+        nav a:hover {
+            color: #0056B3;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 120px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 86, 179, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            color: #0056B3;
+            font-weight: 700;
+        }
+        
+        .hero h1 span {
+            color: #FF9933;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .cta-primary {
+            display: inline-block;
+            background: #FF9933;
+            color: white;
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+        }
+        
+        .cta-primary:hover {
+            background: #e68a2e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 153, 51, 0.4);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0056B3;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 70px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Problem Section */
+        .problem {
+            background: #f8f9fa;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+        
+        .problem-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .problem-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .problem-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #0056B3;
+        }
+        
+        .problem-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Solution Section */
+        .solution-box {
+            background: linear-gradient(135deg, #0056B3 0%, #004499 100%);
+            color: white;
+            padding: 60px;
+            border-radius: 16px;
+            margin-top: 60px;
+        }
+        
+        .solution-box h3 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #FF9933;
+        }
+        
+        .solution-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .solution-list li {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 18px;
+        }
+        
+        .solution-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .solution-list strong {
+            color: #FF9933;
+        }
+        
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border: 2px solid #e5e5e5;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        
+        .benefit-card:hover {
+            border-color: #0056B3;
+            box-shadow: 0 5px 20px rgba(0, 86, 179, 0.1);
+        }
+        
+        .benefit-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #FF9933;
+            color: white;
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #0056B3;
+        }
+        
+        .benefit-card h4 {
+            font-size: 18px;
+            color: #FF9933;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .benefit-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Trust Section */
+        .trust {
+            background: #f8f9fa;
+        }
+        
+        .trust-content {
+            max-width: 900px;
+            margin: 60px auto 0;
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .trust-item {
+            margin-bottom: 40px;
+        }
+        
+        .trust-item h4 {
+            font-size: 22px;
+            color: #0056B3;
+            margin-bottom: 15px;
+        }
+        
+        .trust-item p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* Pricing Section */
+        .pricing-table {
+            max-width: 900px;
+            margin: 60px auto 0;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-header {
+            background: linear-gradient(135deg, #0056B3 0%, #004499 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .pricing-header h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .pricing-col {
+            padding: 40px;
+        }
+        
+        .pricing-col:first-child {
+            border-right: 2px solid #e5e5e5;
+        }
+        
+        .pricing-col h4 {
+            font-size: 20px;
+            color: #0056B3;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .pricing-col.special h4 {
+            color: #FF9933;
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0;
+            color: #0056B3;
+        }
+        
+        .price.special {
+            color: #FF9933;
+        }
+        
+        .price-detail {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .pricing-note {
+            background: #fff9f0;
+            padding: 25px;
+            margin-top: 20px;
+            border-left: 4px solid #FF9933;
+            font-size: 15px;
+            color: #555;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0056B3 0%, #004499 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 25px;
+        }
+        
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-large {
+            padding: 20px 50px;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-orange {
+            background: #FF9933;
+            color: white;
+        }
+        
+        .btn-orange:hover {
+            background: #e68a2e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 153, 51, 0.4);
+        }
+        
+        .btn-white {
+            background: white;
+            color: #0056B3;
+        }
+        
+        .btn-white:hover {
+            background: #f8f9fa;
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #888;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                font-size: 13px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .pricing-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-col:first-child {
+                border-right: none;
+                border-bottom: 2px solid #e5e5e5;
+            }
+            
+            .solution-box {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">🚀 창업공간 PM</div>
+            <ul>
+                <li><a href="#problem">문제</a></li>
+                <li><a href="#solution">솔루션</a></li>
+                <li><a href="#benefits">혜택</a></li>
+                <li><a href="#trust">신뢰</a></li>
+                <li><a href="#pricing">가격</a></li>
+                <li><a href="#cta">신청</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>지역 창업 공간 정착,<br><span>'정보 과부하'</span>로 헤매고 계신가요?</h1>
+                <p>당신의 지역 정착 프로젝트, 이제 흔들리지 않고 '안정'으로 나아갑니다.</p>
+                <a href="#cta" class="cta-primary">🔥 초기 베타 테스터 신청하기 (선착순 5팀)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <h2 class="section-title">당신이 마주한, 비효율의 벽</h2>
+            <p class="section-subtitle">지역 정주형 창업을 시작하는 1인 창조기업 대표님, 이런 문제에 직면해 있지 않으신가요?</p>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⚠️</div>
+                    <h3>끝없는 기관 간 커뮤니케이션</h3>
+                    <p>창업 공간, 지자체, 유관 기관 등 소통 채널이 너무 많아 누구에게 무엇을 요청해야 할지 모르는 비효율에 시달리고 계십니다.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">❌</div>
+                    <h3>모호한 책임 소재와 느린 결정</h3>
+                    <p>공간 사용, 프로젝트 협력 등에서 책임 소재와 의사결정 라인이 불분명하여 중요한 타이밍을 놓치고 있습니다.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">📚</div>
+                    <h3>불필요한 '행정 문서 과부하'</h3>
+                    <p>핵심 비즈니스에 집중하기보다, 과도한 보고서 작성 및 행정 업무에 소중한 에너지를 낭비하고 있습니다.</p>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 50px; font-size: 22px; color: #0056B3; font-weight: 600;">
+                "아이디어 실행에 쓸 에너지를, 행정 문서와 기관 조율에 낭비하고 계십니다."
+            </p>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution">
+        <div class="container">
+            <h2 class="section-title">복잡성을 걷어내고, '안정적인 정착'에 집중하세요</h2>
+            <p class="section-subtitle">1인 창조기업과 지역 지원기관 사이의 혼란스러운 간극을 메우는 단일 창구</p>
+            
+            <div class="solution-box">
+                <h3>✅ 핵심 가치 제안: '지역 정착의 퍼실리테이터(Facilitator)'</h3>
+                <p style="font-size: 18px; line-height: 1.8;">우리는 당신의 프로젝트 초기 구상부터, 지역 내 파트너십 구축, 공간 및 자금 지원 연계에 이르기까지 모든 과정을 전문적으로 조율하고 책임감 있게 관리합니다.</p>
+                
+                <ul class="solution-list">
+                    <li><strong>모든 기관 소통을 단일화:</strong> 기관별 요구사항 및 프로세스를 PM이 통합 관리합니다.</li>
+                    <li><strong>신속하고 명확한 의사결정:</strong> 프로젝트의 목표를 중심으로 신속한 정보 전달 및 의사결정을 유도합니다.</li>
+                    <li><strong>행정 부담의 최소화:</strong> 필수적인 문서 작업을 PM이 담당하여, 대표님은 핵심 비즈니스에 집중할 수 있도록 지원합니다.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="container">
+            <h2 class="section-title">핵심 혜택</h2>
+            <p class="section-subtitle">창업 공간 협력 프로젝트 매니저가 제공하는 실질적 가치</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-number">1</div>
+                    <h3>시간 절약 및 비용 효율</h3>
+                    <h4>복잡한 기관 소통의 80% 제거</h4>
+                    <p>불필요한 미팅 및 문서 작업 시간 낭비를 최소화하여, 대표님의 핵심 역량 집중 시간을 극대화합니다.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-number">2</div>
+                    <h3>지역 파트너십 가속화</h3>
+                    <h4>검증된 협력 기관과의 신속한 매칭</h4>
+                    <p>지역 내 협력 가능한 창업 공간, 전문가 네트워크, 관련 기업을 빠르게 연계하여 정착 속도를 3배 높입니다.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-number">3</div>
+                    <h3>프로젝트 안정성 확보</h3>
+                    <h4>전문가 리스크 관리 및 이슈 사전 대응</h4>
+                    <p>프로젝트 진행 중 발생할 수 있는 행정/계약적 리스크를 사전에 식별하고 대응하여, 불확실성 없는 안정적인 환경을 보장합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section id="trust" class="trust">
+        <div class="container">
+            <h2 class="section-title">함께 만드는 성공, 투명한 협력 모델</h2>
+            <p class="section-subtitle">초기 MVP 단계에서 실질적인 성공 사례를 구축합니다</p>
+            
+            <div class="trust-content">
+                <div class="trust-item">
+                    <h4>📋 MVP 계획: 3개월 집중 코디네이팅 프로그램</h4>
+                    <p>초기 5개 창조기업을 대상으로, 지역 창업 공간 연계 후 3개월간 주 1회 집중 진단 및 조율 서비스를 제공하여 정착 과정을 면밀히 관리합니다.</p>
+                </div>
+                
+                <div class="trust-item">
+                    <h4>🤝 협력 기관 네트워크</h4>
+                    <p>현재 '지역 혁신 창업센터', '지식산업센터 관리 주체' 등과 초기 협력 MOU를 논의 중이며, 고객의 프로젝트 특성에 맞춰 가장 적합한 공간과 기관을 연결합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title">특별 제안</h2>
+            <p class="section-subtitle">초기 베타 테스터 특별 모집: 당신의 성공이 우리의 포트폴리오입니다</p>
+            
+            <div class="pricing-table">
+                <div class="pricing-header">
+                    <h3>🔥 한정 특별 혜택</h3>
+                    <p>서비스의 완성도를 높이기 위해, 실질적인 가치를 경험하실 초기 5개 기업을 선정합니다</p>
+                </div>
+                
+                <div class="pricing-body">
+                    <div class="pricing-col">
+                        <h4>일반 서비스 (예상)</h4>
+                        <div class="price">월 200만원</div>
+                        <div class="price-detail">총 600만원 (3개월)</div>
+                        <ul class="pricing-features">
+                            <li>✓ 3개월 프로젝트 단위 계약</li>
+                            <li>✓ 기본 서비스</li>
+                            <li>✓ 기관 소통 조율</li>
+                            <li>✓ 문서 작업 지원</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-col special">
+                        <h4>베타 테스터 특별 혜택 ⭐</h4>
+                        <div class="price special">월 50만원</div>
+                        <div class="price-detail">총 150만원 (3개월)</div>
+                        <ul class="pricing-features">
+                            <li>🔥 3개월 집중 코디네이팅</li>
+                            <li>🔥 VIP 급 서비스</li>
+                            <li>🔥 주 1회 집중 진단</li>
+                            <li>🔥 피드백 참여 조건</li>
+                            <li>🔥 1년 추가 계약 할인 혜택</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="pricing-note">
+                    <strong>📌 조건:</strong> 선착순 5개 기업에 한해 적용되며, 계약 기간 동안 프로젝트 진행 과정에 대한 솔직한 피드백을 제공해주셔야 합니다.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2>더 이상 소통의 복잡함에<br>에너지를 낭비하지 마세요</h2>
+            <p>당신의 혁신적인 아이디어는 온전히 비즈니스 성장에만 집중해야 합니다.<br>지역 정착의 복잡한 조율은 전문가에게 맡기십시오.</p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn-large btn-orange" onclick="alert('신청서 작성 페이지로 이동합니다.\n선착순 5팀 한정 모집 중입니다!'); return false;">🚀 베타 테스터 신청하기</a>
+                <a href="#" class="btn-large btn-white" onclick="alert('15분 무료 진단 컨설팅 예약 페이지로 이동합니다.'); return false;">📞 15분 무료 컨설팅 받기</a>
+            </div>
+            
+            <p style="margin-top: 40px; font-size: 18px; opacity: 0.9;">
+                지금 바로 신청하고, 3개월 후 안정적으로 지역에 뿌리내린 당신의 비즈니스를 확인하십시오.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 창업 공간 협력 프로젝트 매니저. All rights reserved.</p>
+            <p>지역 정주형 창직을 위한 전문 코디네이팅 서비스</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
